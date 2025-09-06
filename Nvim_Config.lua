@@ -25,30 +25,53 @@
   -- Plugins
   require("lazy").setup({
 
-    -- Theme
     {
-      "morhetz/gruvbox",
+      "olimorris/onedarkpro.nvim", -- this plugin supports One Light
       priority = 1000,
       config = function()
-        vim.g.gruvbox_contrast_dark = "hard"
-        vim.g.gruvbox_italic = 1
-        vim.g.gruvbox_bold = 1
-        vim.g.gruvbox_sign_column = "bg0"
-        vim.g.gruvbox_invert_selection = 0
-        vim.g.gruvbox_termcolors = 256
+        vim.o.background = "light"
 
-        vim.cmd.colorscheme("gruvbox")
+        -- Load One Light variant
+        require("onedarkpro").setup({
+          theme = "onelight",
+          colors = {
+            bg = "#fafafa",
+            fg = "#383a42",
+            cursorline = "#f0f0f0",
+            red = "#e45649",
+            green = "#50a14f",
+            yellow = "#986801",
+            blue = "#4078f2",
+            magenta = "#a626a4",
+            cyan = "#0184bc",
+            gray = "#a0a1a7",
+            bright_red = "#e06c75",
+            bright_green = "#98c379",
+            bright_yellow = "#d19a66",
+            bright_blue = "#61afef",
+            bright_magenta = "#c678dd",
+            bright_cyan = "#56b6c2",
+          },
+          options = {
+            transparency = false,
+            cursorline = true,
+          },
+        })
 
-        -- Customize highlights
-        vim.cmd("highlight Normal guibg=#282828 guifg=#ebdbb2")
-        vim.cmd("highlight NormalNC guibg=#282828 guifg=#ebdbb2")                                                                                               vim.cmd("highlight SignColumn guibg=#282828")                                                                                                           vim.cmd("highlight LineNr guibg=#282828 guifg=#928374")
-        vim.cmd("highlight CursorLine guibg=#3c3836")
-        vim.cmd("highlight StatusLine guibg=#282828 guifg=#fabd2f")
-        vim.cmd("highlight StatusLineNC guibg=#282828 guifg=#928374")
-        vim.cmd("highlight VertSplit guibg=#282828 guifg=#504945")
-        vim.cmd("highlight Pmenu guibg=#3c3836 guifg=#ebdbb2")
-        vim.cmd("highlight PmenuSel guibg=#fabd2f guifg=#282828")
-        vim.cmd("highlight FloatBorder guibg=#3c3836 guifg=#fabd2f")
+        vim.cmd.colorscheme("onelight")
+
+        -- Extra highlight overrides (to match Atom One Light)
+        vim.cmd("highlight Normal guibg=#fafafa guifg=#383a42")
+        vim.cmd("highlight NormalNC guibg=#fafafa guifg=#383a42")
+        vim.cmd("highlight SignColumn guibg=#fafafa")
+        vim.cmd("highlight LineNr guibg=#fafafa guifg=#a0a1a7")
+        vim.cmd("highlight CursorLine guibg=#f0f0f0")
+        vim.cmd("highlight StatusLine guibg=#fafafa guifg=#4078f2")
+        vim.cmd("highlight StatusLineNC guibg=#fafafa guifg=#a0a1a7")
+        vim.cmd("highlight VertSplit guibg=#fafafa guifg=#a0a1a7")
+        vim.cmd("highlight Pmenu guibg=#f0f0f0 guifg=#383a42")
+        vim.cmd("highlight PmenuSel guibg=#4078f2 guifg=#fafafa")
+        vim.cmd("highlight FloatBorder guibg=#f0f0f0 guifg=#4078f2")
       end,
     },
 
